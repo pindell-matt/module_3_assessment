@@ -1,8 +1,12 @@
 <h1>Search Results</h1>
 <h3><%= @results['total'] %> Total Stores</h3>
 
-<ul>
-  <% @stores.each do |store| %>
-    <li><%= store %></li>
-  <% end %>
-</ul>
+<div class="stores">
+  <ul>
+    <% @stores.each do |store| %>
+      <li>
+        <%= store.name %>: <%= store.city %>, <%= store.distance %>, <%= store.phone %>, <%= store.store_type %>
+      </li>
+    <% end %>
+  </ul>
+</div>
