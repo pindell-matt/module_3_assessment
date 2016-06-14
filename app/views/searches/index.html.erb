@@ -5,7 +5,7 @@
   <ul>
     <% @stores.each do |store| %>
       <li>
-        <%= store.name %>: <%= store.city %>, <%= store.distance %>, <%= store.phone %>, <%= store.store_type %>
+        <%= link_to store.name, store_path(store.id) %>: <%= store.city %>, <%= store.distance %>, <%= store.phone %>, <%= store.store_type %>
       </li>
     <% end %>
   </ul>

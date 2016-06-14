@@ -2,8 +2,6 @@ require 'rails_helper'
 
 RSpec.describe "user can search for closest stores with their zip code" do
   it "can enter zip code into search form" do
-  # VCR.use_cassette("search/zip") do
-
     visit root_path
 
     within('.search-form') do
@@ -22,6 +20,5 @@ RSpec.describe "user can search for closest stores with their zip code" do
       expect(page).to have_content(first_store)
       expect(page).to have_content(last_store)
     end
-
   end
 end

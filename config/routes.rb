@@ -16,4 +16,6 @@ Rails.application.routes.draw do
       post   '/items',     to: 'items#create'
     end
   end
+
+  get '/stores/:store_id', to: 'stores#show', as: 'store'
 end
