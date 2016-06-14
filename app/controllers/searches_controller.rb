@@ -4,6 +4,11 @@ class SearchesController < ApplicationController
     connection = ConnectionService.new
     response   = connection.search_by_zip(search_params)
     @results   = JSON.parse(response.body)
+
+    @results["total"]
+    @stores = @results["stores"].map do |store|
+      OpenStruct.new(store)
+    end
   end
 
   private

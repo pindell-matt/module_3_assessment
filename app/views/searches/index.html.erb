@@ -1,3 +1,8 @@
 <h1>Search Results</h1>
+<h3><%= @results['total'] %> Total Stores</h3>
 
-<%= @results %>
+<ul>
+  <% @stores.each do |store| %>
+    <li><%= store %></li>
+  <% end %>
+</ul>
