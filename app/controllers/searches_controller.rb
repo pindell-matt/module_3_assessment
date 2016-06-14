@@ -2,9 +2,8 @@ class SearchesController < ApplicationController
 
   def index
     connection = ConnectionService.new
-    
-    require "pry"
-    binding.pry
+    response   = connection.search_by_zip(search_params)
+    @results   = JSON.parse(response.body)
   end
 
   private

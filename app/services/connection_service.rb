@@ -8,4 +8,13 @@ class ConnectionService
     end
   end
 
+  def search_by_zip(zip)
+    @connection.get do |req|
+      req.url "/v1/stores(area(#{zip},25))"
+      req.params['format']   = 'json'
+      req.params['apiKey']   = ENV['API_KEY']
+      req.params['pageSize'] = 15
+      req.params['show']     = 'longName,city,distance,phone,storeType'
+    end
+  end
 end
