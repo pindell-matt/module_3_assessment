@@ -15,7 +15,17 @@ class Api::V1::ItemsController < Api::ApiController
   end
 
   def create
-    require "pry"
-    binding.pry
+    data = item_params
+    item = Item.create(
+      name:        data["name"],
+      description: data["description"],
+      image_url:   data["image_url"]
+    )
+    respond_with item
   end
+
+  private
+    def item_params
+      params.require("parameters").permit("name", "description", "image_url")
+    end
 end

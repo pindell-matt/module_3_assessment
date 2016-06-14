@@ -48,21 +48,25 @@ RSpec.describe "Api::V1::ItemsController Endpoint", type: :request do
   end
 
   it "uses POST '/items' to create new item" do
-    post "/api/v1/items"
-
-    new_item = Item.create(
+    new_item = {
       name:        "Rockabilly",
       description: "Is it music?",
       image_url:   "shrug.png"
-    )
+    }
+
+    post "/api/v1/items", :parameters => {
+      :name        => 'Rockabilly',
+      :description => 'Is it music?',
+      :image_url   => 'shrug.png'
+    }
 
     expect(response).to have_http_status(201)
 
     created_item = JSON.parse(body)
     expect(created_item).to eq(
-      'name'        => new_item.name,
-      'description' => new_item.description,
-      'image_url'   => new_item.image_url
+      'name'        => new_item[:name],
+      'description' => new_item[:description],
+      'image_url'   => new_item[:image_url]
     )
   end
 end
