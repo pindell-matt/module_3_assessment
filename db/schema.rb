@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160614170609) do
+ActiveRecord::Schema.define(version: 20160614173755) do
 
   create_table "items", force: true do |t|
     t.string   "name"
@@ -36,11 +36,12 @@ ActiveRecord::Schema.define(version: 20160614170609) do
   end
 
   create_table "stores", force: true do |t|
-    t.string "name"
-    t.string "city"
-    t.float  "distance"
-    t.string "phone"
-    t.string "store_type"
+    t.string  "name"
+    t.string  "city"
+    t.float   "distance"
+    t.string  "phone"
+    t.string  "store_type"
+    t.integer "store_id"
   end
 
   create_table "users", force: true do |t|

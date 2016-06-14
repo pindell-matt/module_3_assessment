@@ -1,11 +1,9 @@
 class SearchesController < ApplicationController
 
   def index
-    connection = ConnectionService.new
-    response   = connection.search_by_zip(search_params)
-    @results   = JSON.parse(response.body)
-    # @stores    = Store.create_stores(@results["stores"])
-    @stores    = create_stores(@results["stores"])
+    response = connection.search_by_zip(search_params)
+    @results = JSON.parse(response.body)
+    @stores  = create_stores(@results["stores"])
   end
 
   private
@@ -15,5 +13,9 @@ class SearchesController < ApplicationController
 
     def create_stores(data)
       Store.create_stores(data)
+    end
+
+    def connection
+      ConnectionService.new
     end
 end

@@ -13,7 +13,8 @@ class Store < ActiveRecord::Base
         city:       data["city"],
         distance:   data["distance"],
         phone:      data["phone"],
-        store_type: data["storeType"]
+        store_type: data["storeType"],
+        store_id:   data["storeId"]
       }
     end
 end
