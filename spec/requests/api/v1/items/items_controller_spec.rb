@@ -42,16 +42,27 @@ RSpec.describe "Api::V1::ItemsController Endpoint", type: :request do
   end
 
   it "uses DELETE '/items/:id' to delete specific item" do
-    get "/api/v1/items/1"
+    delete "/api/v1/items/1"
 
     expect(response).to have_http_status(204)
+  end
 
-    item = JSON.parse(body)
+  it "uses POST '/items' to create new item" do
+    post "/api/v1/items"
 
-    expect(item).to eq(
-      'name'        => @item.name,
-      'description' => @item.description,
-      'image_url'   => @item.image_url
+    new_item = Item.create(
+      name:        "Rockabilly",
+      description: "Is it music?",
+      image_url:   "shrug.png"
+    )
+
+    expect(response).to have_http_status(201)
+
+    created_item = JSON.parse(body)
+    expect(created_item).to eq(
+      'name'        => new_item.name,
+      'description' => new_item.description,
+      'image_url'   => new_item.image_url
     )
   end
 end

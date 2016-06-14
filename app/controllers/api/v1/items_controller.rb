@@ -10,8 +10,12 @@ class Api::V1::ItemsController < Api::ApiController
   end
 
   def destroy
+    item = Item.find(params['id'])
+    respond_with item.destroy
   end
 
-  def update
+  def create
+    require "pry"
+    binding.pry
   end
 end
