@@ -21,9 +21,9 @@ class ConnectionService
   def store_details(store_id)
     @connection.get do |req|
       req.url "/v1/stores(storeId=#{store_id})"
-      req.params['format']   = 'json'
-      req.params['show']     = 'postalCode,region,hours,hoursAmPm,gmtOffset,detailedHours'
-      req.params['apiKey']   = ENV['API_KEY']
+      req.params['format'] = 'json'
+      req.params['show']   = 'postalCode,region,hoursAmPm,gmtOffset,detailedHours'
+      req.params['apiKey'] = ENV['API_KEY']
     end
   end
 

@@ -1,3 +1,14 @@
 <h1><%= @store.name %></h1>
-<h3>Address: <%= @store.city %></h3>
-<%= @details %>
+<h3>
+  Address: <%= @store.city %>, <%= @details["stores"].first["region"] %> <%= @details["stores"].first["postalCode"] %>
+</h3>
+
+<div class="hours">
+  <ul>
+    <% @details["stores"].first["detailedHours"].each do |hours| %>
+      <li>
+        <%= hours %>
+      </li>
+    <% end %>
+  </ul>
+</div>
